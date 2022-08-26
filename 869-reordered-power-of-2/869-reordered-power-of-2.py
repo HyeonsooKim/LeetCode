@@ -14,3 +14,9 @@ class Solution:
                 return True
         else:
             return False
+
+
+# 베스트 풀이
+# POWERS = {''.join(sorted(str(1<<n))) for n in range(31)}
+# def reorderedPowerOf2(self, n: int) -> bool:
+#     return ''.join(sorted(str(n))) in POWERS

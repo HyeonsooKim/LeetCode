@@ -13,3 +13,12 @@ class Solution:
                     return False
             else:
                 return True
+
+# 좋은 솔루션
+# Counter 함수는 문자열에서 문자열이 나오는 횟수를 Dictionary 형태로 만들어주는 함수
+# from itertools import Counter
+# class Solution:
+#     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+#         magazine = Counter(magazine)
+#         ransomNote = Counter(ransomNote)
+#         return all(magazine[c] >= ransomNote[c] for c in ransomNote)
