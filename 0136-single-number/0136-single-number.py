@@ -1,6 +1,7 @@
-from collections import Counter
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        for k, v in dict(Counter(nums)).items():
-            if v == 1:
-                return k
+        xor = 0
+        for num in nums:
+            xor ^= num
+        
+        return xor
