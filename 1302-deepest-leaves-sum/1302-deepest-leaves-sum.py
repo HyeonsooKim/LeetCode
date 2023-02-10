@@ -6,10 +6,21 @@
 #         self.right = right
 class Solution:
     def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
-        def level(node):
-            return max(level(node.left), level(node.right)) + 1 if node else 0
-        
-        def dfs(node, height):
-            return 0 if not node else dfs(node.left, height-1) + dfs(node.right, height-1) if height else node.val
-        
-        return dfs(root, level(root)-1)
+        def dfs(node, depth):
+            if not node:
+                return 0, 0
+            
+            if not node.left and not node.right:
+                return node.val, depth
+            
+            left = dfs(node.left, depth+1)
+            right = dfs(node.right, depth+1)
+            
+            if left[1] == right[1]:
+                return left[0] + right[0], left[1]
+            elif left[1] > right[1]:
+                return left[0], left[1]
+            else:
+                return right[0], right[1]
+            
+        return dfs(root,0)[0]
