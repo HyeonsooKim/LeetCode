@@ -1,14 +1,10 @@
 class Solution:
-    def searchInsert(self, nums: List[int], target: int) -> int:
-        start = 0
-        end = len(nums) - 1
-        while start <= end:
-            mid = (start+end) // 2
-            if nums[mid] == target:
-                return mid
-            elif nums[mid] > target:
-                end = mid - 1
+    def searchInsert(self, nums: List[int], target: int) -> int:  # binary search: O(log n)
+        left, right = 0, len(nums)  # no len(nums) - 1, as we might need to insert at the end of the array
+        while left < right:
+            mid = left + right >> 1
+            if nums[mid] < target:
+                left = mid + 1
             else:
-                start = mid + 1
-        return start
-                
+                right = mid
+        return left
