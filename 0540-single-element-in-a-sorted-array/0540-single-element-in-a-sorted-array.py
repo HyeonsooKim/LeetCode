@@ -1,7 +1,6 @@
 from collections import Counter, OrderedDict
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
-        x = Counter(nums)
-        y = list(OrderedDict(x.most_common()))
-        return y[-1]
+        return list(OrderedDict(Counter(nums).most_common()))[-1]
+
         
